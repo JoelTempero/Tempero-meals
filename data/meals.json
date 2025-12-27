@@ -1,0 +1,1198 @@
+{
+  "meals": [
+    {
+      "id": "m1",
+      "name": "Spaghetti Bolognese",
+      "icon": "🍝",
+      "tags": [
+        "Comfort",
+        "Fresh"
+      ],
+      "ingredients": [
+        {
+          "name": "Spaghetti",
+          "amount": "400g"
+        },
+        {
+          "name": "Ground Beef",
+          "amount": "500g"
+        },
+        {
+          "name": "Onion",
+          "amount": "1 large"
+        },
+        {
+          "name": "Garlic",
+          "amount": "3 cloves"
+        },
+        {
+          "name": "Canned Tomatoes",
+          "amount": "400g"
+        },
+        {
+          "name": "Tomato Paste",
+          "amount": "2 tbsp"
+        },
+        {
+          "name": "Olive Oil",
+          "amount": "2 tbsp"
+        },
+        {
+          "name": "Salt",
+          "amount": "to taste"
+        },
+        {
+          "name": "Pepper",
+          "amount": "to taste"
+        },
+        {
+          "name": "Parmesan",
+          "amount": "for serving"
+        }
+      ],
+      "steps": [
+        "Dice onion and mince garlic",
+        "Brown beef in olive oil, breaking up chunks",
+        "Add onion and garlic, cook until soft",
+        "Add tomatoes and tomato paste, simmer 20 mins",
+        "Season with salt and pepper",
+        "Cook spaghetti according to package",
+        "Serve sauce over pasta with parmesan"
+      ]
+    },
+    {
+      "id": "m2",
+      "name": "Chicken Stir Fry",
+      "icon": "🥘",
+      "tags": [
+        "Quick",
+        "Healthy",
+        "Fresh"
+      ],
+      "ingredients": [
+        {
+          "name": "Chicken Breast",
+          "amount": "500g"
+        },
+        {
+          "name": "Broccoli",
+          "amount": "2 cups"
+        },
+        {
+          "name": "Bell Pepper",
+          "amount": "2"
+        },
+        {
+          "name": "Soy Sauce",
+          "amount": "3 tbsp"
+        },
+        {
+          "name": "Garlic",
+          "amount": "2 cloves"
+        },
+        {
+          "name": "Ginger",
+          "amount": "1 tbsp"
+        },
+        {
+          "name": "Sesame Oil",
+          "amount": "1 tbsp"
+        },
+        {
+          "name": "Rice",
+          "amount": "2 cups"
+        }
+      ],
+      "steps": [
+        "Slice chicken into strips",
+        "Chop vegetables",
+        "Cook rice according to package",
+        "Heat oil in wok over high heat",
+        "Stir fry chicken until cooked, set aside",
+        "Stir fry vegetables 3-4 mins",
+        "Return chicken, add sauce ingredients",
+        "Serve over rice"
+      ]
+    },
+    {
+      "id": "m3",
+      "name": "Beef Tacos",
+      "icon": "🌮",
+      "tags": [
+        "Quick",
+        "Fresh"
+      ],
+      "ingredients": [
+        {
+          "name": "Ground Beef",
+          "amount": "500g"
+        },
+        {
+          "name": "Taco Shells",
+          "amount": "12"
+        },
+        {
+          "name": "Lettuce",
+          "amount": "1 head"
+        },
+        {
+          "name": "Tomato",
+          "amount": "2"
+        },
+        {
+          "name": "Cheese",
+          "amount": "1 cup"
+        },
+        {
+          "name": "Sour Cream",
+          "amount": "1/2 cup"
+        },
+        {
+          "name": "Taco Seasoning",
+          "amount": "1 packet"
+        }
+      ],
+      "steps": [
+        "Brown beef and drain fat",
+        "Add taco seasoning with water per packet",
+        "Simmer until thickened",
+        "Shred lettuce and dice tomatoes",
+        "Warm taco shells",
+        "Assemble tacos with toppings"
+      ]
+    },
+    {
+      "id": "m4",
+      "name": "Vegetable Curry",
+      "icon": "🍛",
+      "tags": [
+        "Vegetarian",
+        "Healthy",
+        "Comfort"
+      ],
+      "ingredients": [
+        {
+          "name": "Chickpeas",
+          "amount": "400g can"
+        },
+        {
+          "name": "Coconut Milk",
+          "amount": "400ml"
+        },
+        {
+          "name": "Curry Paste",
+          "amount": "3 tbsp"
+        },
+        {
+          "name": "Onion",
+          "amount": "1"
+        },
+        {
+          "name": "Potatoes",
+          "amount": "2"
+        },
+        {
+          "name": "Spinach",
+          "amount": "2 cups"
+        },
+        {
+          "name": "Rice",
+          "amount": "2 cups"
+        }
+      ],
+      "steps": [
+        "Dice onion and potatoes",
+        "Sauté onion until soft",
+        "Add curry paste and cook 1 min",
+        "Add potatoes and coconut milk",
+        "Simmer 15 mins until potatoes tender",
+        "Add chickpeas and spinach",
+        "Cook until spinach wilted",
+        "Serve over rice"
+      ]
+    },
+    {
+      "id": "m5",
+      "name": "Grilled Salmon",
+      "icon": "🐟",
+      "tags": [
+        "Healthy",
+        "Fresh",
+        "Quick"
+      ],
+      "ingredients": [
+        {
+          "name": "Salmon Fillets",
+          "amount": "4"
+        },
+        {
+          "name": "Lemon",
+          "amount": "2"
+        },
+        {
+          "name": "Olive Oil",
+          "amount": "2 tbsp"
+        },
+        {
+          "name": "Garlic",
+          "amount": "2 cloves"
+        },
+        {
+          "name": "Dill",
+          "amount": "2 tbsp"
+        },
+        {
+          "name": "Asparagus",
+          "amount": "1 bunch"
+        }
+      ],
+      "steps": [
+        "Preheat grill to medium-high",
+        "Season salmon with oil, garlic, dill",
+        "Grill salmon 4-5 mins per side",
+        "Grill asparagus alongside",
+        "Squeeze lemon over salmon",
+        "Serve with asparagus"
+      ]
+    },
+    {
+      "id": "m6",
+      "name": "Margherita Pizza",
+      "icon": "🍕",
+      "tags": [
+        "Comfort",
+        "Fresh"
+      ],
+      "ingredients": [
+        {
+          "name": "Pizza Dough",
+          "amount": "1 ball"
+        },
+        {
+          "name": "Tomato Sauce",
+          "amount": "1/2 cup"
+        },
+        {
+          "name": "Mozzarella",
+          "amount": "200g"
+        },
+        {
+          "name": "Fresh Basil",
+          "amount": "handful"
+        },
+        {
+          "name": "Olive Oil",
+          "amount": "drizzle"
+        }
+      ],
+      "steps": [
+        "Preheat oven to 250°C",
+        "Roll out dough on floured surface",
+        "Spread sauce leaving border",
+        "Add torn mozzarella pieces",
+        "Bake 10-12 mins until golden",
+        "Top with fresh basil and oil"
+      ]
+    },
+    {
+      "id": "m7",
+      "name": "Caesar Salad",
+      "icon": "🥗",
+      "tags": [
+        "Healthy",
+        "Quick",
+        "Fresh"
+      ],
+      "ingredients": [
+        {
+          "name": "Romaine Lettuce",
+          "amount": "2 heads"
+        },
+        {
+          "name": "Croutons",
+          "amount": "1 cup"
+        },
+        {
+          "name": "Parmesan",
+          "amount": "1/2 cup"
+        },
+        {
+          "name": "Caesar Dressing",
+          "amount": "1/2 cup"
+        },
+        {
+          "name": "Chicken Breast",
+          "amount": "2 (optional)"
+        }
+      ],
+      "steps": [
+        "Chop romaine lettuce",
+        "Grill chicken if using, slice",
+        "Toss lettuce with dressing",
+        "Add croutons and parmesan",
+        "Top with chicken slices"
+      ]
+    },
+    {
+      "id": "m8",
+      "name": "Fried Rice",
+      "icon": "🍚",
+      "tags": [
+        "Quick",
+        "Comfort"
+      ],
+      "ingredients": [
+        {
+          "name": "Cooked Rice",
+          "amount": "4 cups"
+        },
+        {
+          "name": "Eggs",
+          "amount": "3"
+        },
+        {
+          "name": "Frozen Peas",
+          "amount": "1 cup"
+        },
+        {
+          "name": "Carrots",
+          "amount": "2"
+        },
+        {
+          "name": "Soy Sauce",
+          "amount": "3 tbsp"
+        },
+        {
+          "name": "Sesame Oil",
+          "amount": "1 tbsp"
+        },
+        {
+          "name": "Green Onions",
+          "amount": "4"
+        }
+      ],
+      "steps": [
+        "Use day-old cold rice",
+        "Dice carrots small",
+        "Scramble eggs, set aside",
+        "Stir fry carrots and peas",
+        "Add rice and soy sauce",
+        "Mix in eggs",
+        "Garnish with green onions"
+      ]
+    },
+    {
+      "id": "m9",
+      "name": "Beef Burgers",
+      "icon": "🍔",
+      "tags": [
+        "Comfort",
+        "Quick"
+      ],
+      "ingredients": [
+        {
+          "name": "Ground Beef",
+          "amount": "500g"
+        },
+        {
+          "name": "Burger Buns",
+          "amount": "4"
+        },
+        {
+          "name": "Cheese",
+          "amount": "4 slices"
+        },
+        {
+          "name": "Lettuce",
+          "amount": "4 leaves"
+        },
+        {
+          "name": "Tomato",
+          "amount": "1"
+        },
+        {
+          "name": "Onion",
+          "amount": "1"
+        },
+        {
+          "name": "Pickles",
+          "amount": "8"
+        },
+        {
+          "name": "Ketchup",
+          "amount": "to taste"
+        }
+      ],
+      "steps": [
+        "Mix beef with salt and pepper",
+        "Form into 4 patties",
+        "Grill 4-5 mins per side",
+        "Add cheese in last minute",
+        "Toast buns",
+        "Assemble with toppings"
+      ]
+    },
+    {
+      "id": "m10",
+      "name": "Chicken Soup",
+      "icon": "🍲",
+      "tags": [
+        "Comfort",
+        "Healthy"
+      ],
+      "ingredients": [
+        {
+          "name": "Chicken",
+          "amount": "1 whole"
+        },
+        {
+          "name": "Carrots",
+          "amount": "3"
+        },
+        {
+          "name": "Celery",
+          "amount": "3 stalks"
+        },
+        {
+          "name": "Onion",
+          "amount": "1"
+        },
+        {
+          "name": "Egg Noodles",
+          "amount": "200g"
+        },
+        {
+          "name": "Chicken Stock",
+          "amount": "8 cups"
+        },
+        {
+          "name": "Thyme",
+          "amount": "2 sprigs"
+        }
+      ],
+      "steps": [
+        "Simmer chicken in stock 1 hour",
+        "Remove chicken, shred meat",
+        "Dice vegetables",
+        "Add vegetables to broth",
+        "Simmer until tender",
+        "Add noodles and chicken",
+        "Cook until noodles done"
+      ]
+    },
+    {
+      "id": "m11",
+      "name": "Fish and Chips",
+      "icon": "🐟",
+      "tags": [
+        "Comfort",
+        "Frozen"
+      ],
+      "ingredients": [
+        {
+          "name": "White Fish Fillets",
+          "amount": "4"
+        },
+        {
+          "name": "Potatoes",
+          "amount": "4 large"
+        },
+        {
+          "name": "Flour",
+          "amount": "1 cup"
+        },
+        {
+          "name": "Beer",
+          "amount": "1 cup"
+        },
+        {
+          "name": "Oil",
+          "amount": "for frying"
+        },
+        {
+          "name": "Peas",
+          "amount": "1 cup"
+        }
+      ],
+      "steps": [
+        "Cut potatoes into chips",
+        "Soak chips in cold water 30 mins",
+        "Make batter with flour and beer",
+        "Heat oil to 180°C",
+        "Fry chips until golden",
+        "Coat fish in batter",
+        "Fry fish 4-5 mins per side",
+        "Serve with peas and tartar sauce"
+      ]
+    },
+    {
+      "id": "m12",
+      "name": "Pad Thai",
+      "icon": "🍜",
+      "tags": [
+        "Quick",
+        "Fresh"
+      ],
+      "ingredients": [
+        {
+          "name": "Rice Noodles",
+          "amount": "250g"
+        },
+        {
+          "name": "Shrimp",
+          "amount": "300g"
+        },
+        {
+          "name": "Eggs",
+          "amount": "2"
+        },
+        {
+          "name": "Bean Sprouts",
+          "amount": "1 cup"
+        },
+        {
+          "name": "Peanuts",
+          "amount": "1/4 cup"
+        },
+        {
+          "name": "Lime",
+          "amount": "2"
+        },
+        {
+          "name": "Fish Sauce",
+          "amount": "3 tbsp"
+        },
+        {
+          "name": "Tamarind Paste",
+          "amount": "2 tbsp"
+        }
+      ],
+      "steps": [
+        "Soak noodles in warm water",
+        "Make sauce with fish sauce and tamarind",
+        "Stir fry shrimp, set aside",
+        "Scramble eggs in wok",
+        "Add noodles and sauce",
+        "Toss with bean sprouts",
+        "Top with peanuts and lime"
+      ]
+    },
+    {
+      "id": "m13",
+      "name": "Lasagna",
+      "icon": "🍝",
+      "tags": [
+        "Comfort",
+        "Bulk Prep"
+      ],
+      "ingredients": [
+        {
+          "name": "Lasagna Sheets",
+          "amount": "12"
+        },
+        {
+          "name": "Ground Beef",
+          "amount": "500g"
+        },
+        {
+          "name": "Ricotta",
+          "amount": "500g"
+        },
+        {
+          "name": "Mozzarella",
+          "amount": "300g"
+        },
+        {
+          "name": "Parmesan",
+          "amount": "100g"
+        },
+        {
+          "name": "Tomato Sauce",
+          "amount": "700g"
+        },
+        {
+          "name": "Onion",
+          "amount": "1"
+        }
+      ],
+      "steps": [
+        "Make meat sauce with beef and tomatoes",
+        "Mix ricotta with egg",
+        "Layer sauce, pasta, ricotta, mozzarella",
+        "Repeat layers 3 times",
+        "Top with parmesan",
+        "Bake at 180°C for 45 mins",
+        "Rest 10 mins before cutting"
+      ]
+    },
+    {
+      "id": "m14",
+      "name": "Greek Salad",
+      "icon": "🥗",
+      "tags": [
+        "Healthy",
+        "Quick",
+        "Vegetarian",
+        "Fresh"
+      ],
+      "ingredients": [
+        {
+          "name": "Cucumber",
+          "amount": "1"
+        },
+        {
+          "name": "Tomatoes",
+          "amount": "4"
+        },
+        {
+          "name": "Red Onion",
+          "amount": "1/2"
+        },
+        {
+          "name": "Feta Cheese",
+          "amount": "200g"
+        },
+        {
+          "name": "Olives",
+          "amount": "1/2 cup"
+        },
+        {
+          "name": "Olive Oil",
+          "amount": "3 tbsp"
+        },
+        {
+          "name": "Oregano",
+          "amount": "1 tsp"
+        }
+      ],
+      "steps": [
+        "Chop cucumber and tomatoes",
+        "Slice red onion thinly",
+        "Combine in bowl",
+        "Add olives and feta",
+        "Dress with oil and oregano"
+      ]
+    },
+    {
+      "id": "m15",
+      "name": "Chicken Parmesan",
+      "icon": "🍗",
+      "tags": [
+        "Comfort",
+        "Fresh"
+      ],
+      "ingredients": [
+        {
+          "name": "Chicken Breast",
+          "amount": "4"
+        },
+        {
+          "name": "Breadcrumbs",
+          "amount": "1 cup"
+        },
+        {
+          "name": "Parmesan",
+          "amount": "1/2 cup"
+        },
+        {
+          "name": "Marinara",
+          "amount": "2 cups"
+        },
+        {
+          "name": "Mozzarella",
+          "amount": "200g"
+        },
+        {
+          "name": "Eggs",
+          "amount": "2"
+        }
+      ],
+      "steps": [
+        "Pound chicken thin",
+        "Dip in egg then breadcrumb-parmesan mix",
+        "Fry until golden",
+        "Place in baking dish",
+        "Top with marinara and mozzarella",
+        "Bake 20 mins at 200°C",
+        "Serve over pasta"
+      ]
+    },
+    {
+      "id": "m16",
+      "name": "Ramen",
+      "icon": "🍜",
+      "tags": [
+        "Comfort",
+        "Quick"
+      ],
+      "ingredients": [
+        {
+          "name": "Ramen Noodles",
+          "amount": "4 packets"
+        },
+        {
+          "name": "Chicken Stock",
+          "amount": "8 cups"
+        },
+        {
+          "name": "Soy Sauce",
+          "amount": "4 tbsp"
+        },
+        {
+          "name": "Eggs",
+          "amount": "4"
+        },
+        {
+          "name": "Green Onions",
+          "amount": "4"
+        },
+        {
+          "name": "Nori",
+          "amount": "4 sheets"
+        },
+        {
+          "name": "Pork Belly",
+          "amount": "300g"
+        }
+      ],
+      "steps": [
+        "Simmer pork in stock 2 hours",
+        "Soft boil eggs 6.5 mins",
+        "Heat stock with soy sauce",
+        "Cook noodles separately",
+        "Assemble: noodles, broth, pork",
+        "Top with egg, nori, green onions"
+      ]
+    },
+    {
+      "id": "m17",
+      "name": "Quesadillas",
+      "icon": "🌯",
+      "tags": [
+        "Quick",
+        "Comfort"
+      ],
+      "ingredients": [
+        {
+          "name": "Tortillas",
+          "amount": "4 large"
+        },
+        {
+          "name": "Cheese",
+          "amount": "2 cups"
+        },
+        {
+          "name": "Chicken",
+          "amount": "2 cups"
+        },
+        {
+          "name": "Bell Peppers",
+          "amount": "2"
+        },
+        {
+          "name": "Salsa",
+          "amount": "1 cup"
+        },
+        {
+          "name": "Sour Cream",
+          "amount": "1/2 cup"
+        }
+      ],
+      "steps": [
+        "Shred cooked chicken",
+        "Slice peppers",
+        "Lay tortilla, add cheese and fillings",
+        "Fold in half",
+        "Cook on griddle until golden",
+        "Flip and cook other side",
+        "Serve with salsa and sour cream"
+      ]
+    },
+    {
+      "id": "m18",
+      "name": "Shepherd's Pie",
+      "icon": "🥧",
+      "tags": [
+        "Comfort",
+        "Bulk Prep"
+      ],
+      "ingredients": [
+        {
+          "name": "Ground Lamb",
+          "amount": "500g"
+        },
+        {
+          "name": "Potatoes",
+          "amount": "1kg"
+        },
+        {
+          "name": "Carrots",
+          "amount": "2"
+        },
+        {
+          "name": "Peas",
+          "amount": "1 cup"
+        },
+        {
+          "name": "Onion",
+          "amount": "1"
+        },
+        {
+          "name": "Beef Stock",
+          "amount": "1 cup"
+        },
+        {
+          "name": "Butter",
+          "amount": "50g"
+        }
+      ],
+      "steps": [
+        "Brown lamb with onion",
+        "Add diced carrots and stock",
+        "Simmer 20 mins",
+        "Add peas",
+        "Make mashed potatoes with butter",
+        "Spread meat in dish",
+        "Top with mashed potatoes",
+        "Bake at 200°C for 25 mins"
+      ]
+    },
+    {
+      "id": "m19",
+      "name": "Pancakes",
+      "icon": "🥞",
+      "tags": [
+        "Quick",
+        "Comfort"
+      ],
+      "ingredients": [
+        {
+          "name": "Flour",
+          "amount": "2 cups"
+        },
+        {
+          "name": "Milk",
+          "amount": "1.5 cups"
+        },
+        {
+          "name": "Eggs",
+          "amount": "2"
+        },
+        {
+          "name": "Butter",
+          "amount": "3 tbsp"
+        },
+        {
+          "name": "Sugar",
+          "amount": "2 tbsp"
+        },
+        {
+          "name": "Baking Powder",
+          "amount": "2 tsp"
+        },
+        {
+          "name": "Maple Syrup",
+          "amount": "for serving"
+        }
+      ],
+      "steps": [
+        "Mix dry ingredients",
+        "Whisk wet ingredients",
+        "Combine until just mixed",
+        "Heat griddle to medium",
+        "Pour 1/4 cup batter per pancake",
+        "Flip when bubbles form",
+        "Serve with butter and syrup"
+      ]
+    },
+    {
+      "id": "m20",
+      "name": "Burrito Bowl",
+      "icon": "🥙",
+      "tags": [
+        "Healthy",
+        "Fresh"
+      ],
+      "ingredients": [
+        {
+          "name": "Rice",
+          "amount": "2 cups"
+        },
+        {
+          "name": "Black Beans",
+          "amount": "400g can"
+        },
+        {
+          "name": "Chicken",
+          "amount": "500g"
+        },
+        {
+          "name": "Corn",
+          "amount": "1 cup"
+        },
+        {
+          "name": "Avocado",
+          "amount": "2"
+        },
+        {
+          "name": "Salsa",
+          "amount": "1 cup"
+        },
+        {
+          "name": "Lime",
+          "amount": "2"
+        }
+      ],
+      "steps": [
+        "Cook and season rice with lime",
+        "Grill seasoned chicken, slice",
+        "Warm black beans",
+        "Chop avocado",
+        "Assemble bowls: rice, beans, chicken",
+        "Top with corn, avocado, salsa"
+      ]
+    },
+    {
+      "id": "m21",
+      "name": "French Toast",
+      "icon": "🍞",
+      "tags": [
+        "Quick",
+        "Comfort"
+      ],
+      "ingredients": [
+        {
+          "name": "Bread",
+          "amount": "8 slices"
+        },
+        {
+          "name": "Eggs",
+          "amount": "4"
+        },
+        {
+          "name": "Milk",
+          "amount": "1/2 cup"
+        },
+        {
+          "name": "Cinnamon",
+          "amount": "1 tsp"
+        },
+        {
+          "name": "Vanilla",
+          "amount": "1 tsp"
+        },
+        {
+          "name": "Butter",
+          "amount": "2 tbsp"
+        },
+        {
+          "name": "Maple Syrup",
+          "amount": "for serving"
+        }
+      ],
+      "steps": [
+        "Whisk eggs, milk, cinnamon, vanilla",
+        "Heat butter in pan",
+        "Dip bread in egg mixture",
+        "Cook until golden each side",
+        "Serve with syrup and berries"
+      ]
+    },
+    {
+      "id": "m22",
+      "name": "Meatballs",
+      "icon": "🍝",
+      "tags": [
+        "Comfort",
+        "Bulk Prep"
+      ],
+      "ingredients": [
+        {
+          "name": "Ground Beef",
+          "amount": "500g"
+        },
+        {
+          "name": "Breadcrumbs",
+          "amount": "1/2 cup"
+        },
+        {
+          "name": "Egg",
+          "amount": "1"
+        },
+        {
+          "name": "Parmesan",
+          "amount": "1/4 cup"
+        },
+        {
+          "name": "Garlic",
+          "amount": "2 cloves"
+        },
+        {
+          "name": "Marinara",
+          "amount": "3 cups"
+        },
+        {
+          "name": "Pasta",
+          "amount": "400g"
+        }
+      ],
+      "steps": [
+        "Mix beef, breadcrumbs, egg, parmesan, garlic",
+        "Form into 20 meatballs",
+        "Brown in pan",
+        "Add to marinara, simmer 20 mins",
+        "Cook pasta",
+        "Serve meatballs over pasta"
+      ]
+    },
+    {
+      "id": "m23",
+      "name": "BLT Sandwich",
+      "icon": "🥪",
+      "tags": [
+        "Quick",
+        "Fresh"
+      ],
+      "ingredients": [
+        {
+          "name": "Bacon",
+          "amount": "8 strips"
+        },
+        {
+          "name": "Lettuce",
+          "amount": "4 leaves"
+        },
+        {
+          "name": "Tomato",
+          "amount": "2"
+        },
+        {
+          "name": "Bread",
+          "amount": "8 slices"
+        },
+        {
+          "name": "Mayo",
+          "amount": "4 tbsp"
+        }
+      ],
+      "steps": [
+        "Cook bacon until crispy",
+        "Toast bread",
+        "Spread mayo on bread",
+        "Layer lettuce, tomato, bacon",
+        "Close sandwich and slice"
+      ]
+    },
+    {
+      "id": "m24",
+      "name": "Mac and Cheese",
+      "icon": "🧀",
+      "tags": [
+        "Comfort",
+        "Quick"
+      ],
+      "ingredients": [
+        {
+          "name": "Macaroni",
+          "amount": "400g"
+        },
+        {
+          "name": "Cheddar",
+          "amount": "300g"
+        },
+        {
+          "name": "Milk",
+          "amount": "2 cups"
+        },
+        {
+          "name": "Butter",
+          "amount": "3 tbsp"
+        },
+        {
+          "name": "Flour",
+          "amount": "3 tbsp"
+        },
+        {
+          "name": "Mustard",
+          "amount": "1 tsp"
+        }
+      ],
+      "steps": [
+        "Cook macaroni al dente",
+        "Make roux with butter and flour",
+        "Add milk slowly, whisk",
+        "Stir in cheese until melted",
+        "Add mustard, salt, pepper",
+        "Mix in macaroni",
+        "Optional: bake with breadcrumb topping"
+      ]
+    },
+    {
+      "id": "m25",
+      "name": "Teriyaki Chicken",
+      "icon": "🍗",
+      "tags": [
+        "Quick",
+        "Healthy"
+      ],
+      "ingredients": [
+        {
+          "name": "Chicken Thighs",
+          "amount": "600g"
+        },
+        {
+          "name": "Soy Sauce",
+          "amount": "1/2 cup"
+        },
+        {
+          "name": "Mirin",
+          "amount": "1/4 cup"
+        },
+        {
+          "name": "Sugar",
+          "amount": "2 tbsp"
+        },
+        {
+          "name": "Ginger",
+          "amount": "1 tbsp"
+        },
+        {
+          "name": "Rice",
+          "amount": "2 cups"
+        },
+        {
+          "name": "Broccoli",
+          "amount": "2 cups"
+        }
+      ],
+      "steps": [
+        "Make sauce: soy, mirin, sugar, ginger",
+        "Grill or pan-fry chicken",
+        "Brush with sauce while cooking",
+        "Steam broccoli",
+        "Cook rice",
+        "Slice chicken, serve over rice",
+        "Drizzle extra sauce"
+      ]
+    }
+  ],
+  "calendar": {},
+  "cart": [],
+  "badges": {},
+  "tags": [
+    "Fresh",
+    "Frozen",
+    "Fast Food",
+    "Bulk Prep",
+    "Vegetarian",
+    "Quick",
+    "Comfort",
+    "Healthy"
+  ],
+  "people": [
+    "Rachel",
+    "Joel"
+  ],
+  "cookLog": [],
+  "settings": {}
+}
