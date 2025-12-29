@@ -1203,20 +1203,8 @@
       "checked": false
     },
     {
-      "name": "Cheese",
-      "amount": "1 cup",
-      "source": "Beef Tacos",
-      "checked": false
-    },
-    {
       "name": "Sour Cream",
       "amount": "1/2 cup",
-      "source": "Beef Tacos",
-      "checked": false
-    },
-    {
-      "name": "Taco Seasoning",
-      "amount": "1 packet",
       "source": "Beef Tacos",
       "checked": false
     }
