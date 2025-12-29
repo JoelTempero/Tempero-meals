@@ -7,7 +7,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="mobile-web-app-capable" content="yes">
-    <title>Tempero Meals</title>
+    <title>J&R Meals</title>
     <link rel="manifest" href="manifest.json">
     <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
     <link rel="apple-touch-icon" href="icon-192.png">
@@ -89,6 +89,9 @@
         .spin-result{text-align:center;margin-top:1.5rem;padding:1.5rem;background:var(--bg-card);border-radius:16px;display:none;width:100%;max-width:320px}
         .spin-result.show{display:block;animation:resultPop 0.3s ease}
         @keyframes resultPop{0%{transform:scale(0.8);opacity:0}100%{transform:scale(1);opacity:1}}
+        .confetti-container{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:1000;overflow:hidden}
+        .confetti{position:absolute;width:10px;height:10px;opacity:0;animation:confetti-fall 3s ease-out forwards}
+        @keyframes confetti-fall{0%{transform:translateY(-100px) rotate(0deg);opacity:1}100%{transform:translateY(100vh) rotate(720deg);opacity:0}}
         .spin-result-title{font-size:0.9rem;color:var(--text-muted);margin-bottom:0.5rem}
         .spin-result-meal{font-size:1.5rem;font-weight:700;margin-bottom:1rem}
         .spin-result-actions{display:flex;gap:0.75rem;justify-content:center}
@@ -470,6 +473,11 @@
                 <div class="people-list" id="peopleList"></div>
                 <button class="add-person-btn" id="addPersonBtn">+ Add Person</button>
             </div>
+            <div class="settings-section">
+                <div class="settings-section-title">Data</div>
+                <button style="width:100%;padding:0.75rem;background:var(--tomato);color:white;border-radius:8px;font-weight:600;font-size:0.9rem" id="resetDataBtn">Reset All Data</button>
+                <p style="font-size:0.75rem;color:var(--text-muted);margin-top:0.5rem;text-align:center">This will clear all meals, calendar entries, and badges</p>
+            </div>
             <div style="margin-top:2rem">
                 <button style="width:100%;padding:1rem;background:var(--primary);color:var(--bg-dark);border-radius:12px;font-weight:600;font-size:1rem" id="saveSettingsBtn">Save Settings</button>
             </div>
@@ -500,26 +508,26 @@
 const CONFIG={PIN:'3489',REPO_NAME:'Tempero-Meals',REPO_OWNER:'',DATA_FILE:'data/meals.json'};
 const DEFAULT_PEOPLE=['Rachel','Joel'];
 const DEFAULT_TAGS=['Fresh','Frozen','Fast Food','Bulk Prep','Vegetarian','Quick','Comfort','Healthy'];
-const FOOD_EMOJIS=['🍕','🍔','🍟','🌭','🍿','🧂','🥚','🍳','🧇','🥞','🧈','🍞','🥐','🥖','🥨','🧀','🥗','🥙','🥪','🌮','🌯','🫔','🥫','🍝','🍜','🍲','🍛','🍣','🍱','🥟','🍤','🍙','🍚','🍘','🍥','🥠','🍢','🍡','🍧','🍨','🍦','🥧','🧁','🍰','🎂','🍮','🍭','🍬','🍫','🍩','🍪','🌰','🥜','🫘','🍯','🥛','🍼','🫖','🍵','🧃','🥤','🧋','🍶','🍺','🍻','🥂','🍷','🥃','🍸','🍹','🧉','🍾','🧊','🥄','🍴','🍽','🥣','🥡','🥢','🧆','🥩','🍖','🍗','🥓','🫓','🥬','🥦','🧄','🧅','🍄','🥕','🌽','🌶','🫑','🥒','🥬','🥑','🍆','🧃','🍅','🍇','🍈','🍉','🍊','🍋','🍌','🍍','🥭','🍎','🍏','🍐','🍑','🍒','🍓','🫐','🥝'];
+const FOOD_EMOJIS=['🍕','🍔','🍟','🌭','🍿','🥚','🍳','🥞','🍞','🧀','🥗','🥪','🌮','🌯','🍝','🍜','🍲','🍛','🍣','🍱','🍤','🍙','🍚','🥟','🍢','🍡','🍧','🍨','🍦','🧁','🍰','🍮','🍭','🍬','🍫','🍩','🍪','🍯','🥛','🍵','🍶','🍺','🍷','🥤','🍴','🍽','🥄','🥩','🍖','🍗','🥓','🥬','🥦','🥕','🌽','🥒','🥑','🍆','🍅','🍇','🍈','🍉','🍊','🍋','🍌','🍍','🍎','🍏','🍐','🍑','🍒','🍓','🥝','🥜','🌰','🍄','🧅','🧄','🥔','🫑','🌶'];
 const STARTER_MEALS=[
 {id:'m1',name:'Spaghetti Bolognese',icon:'🍝',tags:['Comfort','Fresh'],ingredients:[{name:'Spaghetti',amount:'400g'},{name:'Ground Beef',amount:'500g'},{name:'Onion',amount:'1 large'},{name:'Garlic',amount:'3 cloves'},{name:'Canned Tomatoes',amount:'400g'},{name:'Tomato Paste',amount:'2 tbsp'},{name:'Olive Oil',amount:'2 tbsp'},{name:'Salt',amount:'to taste'},{name:'Pepper',amount:'to taste'},{name:'Parmesan',amount:'for serving'}],steps:['Dice onion and mince garlic','Brown beef in olive oil, breaking up chunks','Add onion and garlic, cook until soft','Add tomatoes and tomato paste, simmer 20 mins','Season with salt and pepper','Cook spaghetti according to package','Serve sauce over pasta with parmesan']},
-{id:'m2',name:'Chicken Stir Fry',icon:'🥘',tags:['Quick','Healthy','Fresh'],ingredients:[{name:'Chicken Breast',amount:'500g'},{name:'Broccoli',amount:'2 cups'},{name:'Bell Pepper',amount:'2'},{name:'Soy Sauce',amount:'3 tbsp'},{name:'Garlic',amount:'2 cloves'},{name:'Ginger',amount:'1 tbsp'},{name:'Sesame Oil',amount:'1 tbsp'},{name:'Rice',amount:'2 cups'}],steps:['Slice chicken into strips','Chop vegetables','Cook rice according to package','Heat oil in wok over high heat','Stir fry chicken until cooked, set aside','Stir fry vegetables 3-4 mins','Return chicken, add sauce ingredients','Serve over rice']},
+{id:'m2',name:'Chicken Stir Fry',icon:'🍳',tags:['Quick','Healthy','Fresh'],ingredients:[{name:'Chicken Breast',amount:'500g'},{name:'Broccoli',amount:'2 cups'},{name:'Bell Pepper',amount:'2'},{name:'Soy Sauce',amount:'3 tbsp'},{name:'Garlic',amount:'2 cloves'},{name:'Ginger',amount:'1 tbsp'},{name:'Sesame Oil',amount:'1 tbsp'},{name:'Rice',amount:'2 cups'}],steps:['Slice chicken into strips','Chop vegetables','Cook rice according to package','Heat oil in wok over high heat','Stir fry chicken until cooked, set aside','Stir fry vegetables 3-4 mins','Return chicken, add sauce ingredients','Serve over rice']},
 {id:'m3',name:'Beef Tacos',icon:'🌮',tags:['Quick','Fresh'],ingredients:[{name:'Ground Beef',amount:'500g'},{name:'Taco Shells',amount:'12'},{name:'Lettuce',amount:'1 head'},{name:'Tomato',amount:'2'},{name:'Cheese',amount:'1 cup'},{name:'Sour Cream',amount:'1/2 cup'},{name:'Taco Seasoning',amount:'1 packet'}],steps:['Brown beef and drain fat','Add taco seasoning with water per packet','Simmer until thickened','Shred lettuce and dice tomatoes','Warm taco shells','Assemble tacos with toppings']},
-{id:'m4',name:'Vegetable Curry',icon:'🍛',tags:['Vegetarian','Healthy','Comfort'],ingredients:[{name:'Chickpeas',amount:'400g can'},{name:'Coconut Milk',amount:'400ml'},{name:'Curry Paste',amount:'3 tbsp'},{name:'Onion',amount:'1'},{name:'Potatoes',amount:'2'},{name:'Spinach',amount:'2 cups'},{name:'Rice',amount:'2 cups'}],steps:['Dice onion and potatoes','Sauté onion until soft','Add curry paste and cook 1 min','Add potatoes and coconut milk','Simmer 15 mins until potatoes tender','Add chickpeas and spinach','Cook until spinach wilted','Serve over rice']},
+{id:'m4',name:'Vegetable Curry',icon:'🍛',tags:['Vegetarian','Healthy','Comfort'],ingredients:[{name:'Chickpeas',amount:'400g can'},{name:'Coconut Milk',amount:'400ml'},{name:'Curry Paste',amount:'3 tbsp'},{name:'Onion',amount:'1'},{name:'Potatoes',amount:'2'},{name:'Spinach',amount:'2 cups'},{name:'Rice',amount:'2 cups'}],steps:['Dice onion and potatoes','Saute onion until soft','Add curry paste and cook 1 min','Add potatoes and coconut milk','Simmer 15 mins until potatoes tender','Add chickpeas and spinach','Cook until spinach wilted','Serve over rice']},
 {id:'m5',name:'Grilled Salmon',icon:'🍣',tags:['Healthy','Fresh','Quick'],ingredients:[{name:'Salmon Fillets',amount:'4'},{name:'Lemon',amount:'2'},{name:'Olive Oil',amount:'2 tbsp'},{name:'Garlic',amount:'2 cloves'},{name:'Dill',amount:'2 tbsp'},{name:'Asparagus',amount:'1 bunch'}],steps:['Preheat grill to medium-high','Season salmon with oil, garlic, dill','Grill salmon 4-5 mins per side','Grill asparagus alongside','Squeeze lemon over salmon','Serve with asparagus']},
-{id:'m6',name:'Margherita Pizza',icon:'🍕',tags:['Comfort','Fresh'],ingredients:[{name:'Pizza Dough',amount:'1 ball'},{name:'Tomato Sauce',amount:'1/2 cup'},{name:'Mozzarella',amount:'200g'},{name:'Fresh Basil',amount:'handful'},{name:'Olive Oil',amount:'drizzle'}],steps:['Preheat oven to 250°C','Roll out dough on floured surface','Spread sauce leaving border','Add torn mozzarella pieces','Bake 10-12 mins until golden','Top with fresh basil and oil']},
+{id:'m6',name:'Margherita Pizza',icon:'🍕',tags:['Comfort','Fresh'],ingredients:[{name:'Pizza Dough',amount:'1 ball'},{name:'Tomato Sauce',amount:'1/2 cup'},{name:'Mozzarella',amount:'200g'},{name:'Fresh Basil',amount:'handful'},{name:'Olive Oil',amount:'drizzle'}],steps:['Preheat oven to 250C','Roll out dough on floured surface','Spread sauce leaving border','Add torn mozzarella pieces','Bake 10-12 mins until golden','Top with fresh basil and oil']},
 {id:'m7',name:'Caesar Salad',icon:'🥗',tags:['Healthy','Quick','Fresh'],ingredients:[{name:'Romaine Lettuce',amount:'2 heads'},{name:'Croutons',amount:'1 cup'},{name:'Parmesan',amount:'1/2 cup'},{name:'Caesar Dressing',amount:'1/2 cup'},{name:'Chicken Breast',amount:'2 (optional)'}],steps:['Chop romaine lettuce','Grill chicken if using, slice','Toss lettuce with dressing','Add croutons and parmesan','Top with chicken slices']},
 {id:'m8',name:'Fried Rice',icon:'🍚',tags:['Quick','Comfort'],ingredients:[{name:'Cooked Rice',amount:'4 cups'},{name:'Eggs',amount:'3'},{name:'Frozen Peas',amount:'1 cup'},{name:'Carrots',amount:'2'},{name:'Soy Sauce',amount:'3 tbsp'},{name:'Sesame Oil',amount:'1 tbsp'},{name:'Green Onions',amount:'4'}],steps:['Use day-old cold rice','Dice carrots small','Scramble eggs, set aside','Stir fry carrots and peas','Add rice and soy sauce','Mix in eggs','Garnish with green onions']},
 {id:'m9',name:'Beef Burgers',icon:'🍔',tags:['Comfort','Quick'],ingredients:[{name:'Ground Beef',amount:'500g'},{name:'Burger Buns',amount:'4'},{name:'Cheese',amount:'4 slices'},{name:'Lettuce',amount:'4 leaves'},{name:'Tomato',amount:'1'},{name:'Onion',amount:'1'},{name:'Pickles',amount:'8'},{name:'Ketchup',amount:'to taste'}],steps:['Mix beef with salt and pepper','Form into 4 patties','Grill 4-5 mins per side','Add cheese in last minute','Toast buns','Assemble with toppings']},
 {id:'m10',name:'Chicken Soup',icon:'🍲',tags:['Comfort','Healthy'],ingredients:[{name:'Chicken',amount:'1 whole'},{name:'Carrots',amount:'3'},{name:'Celery',amount:'3 stalks'},{name:'Onion',amount:'1'},{name:'Egg Noodles',amount:'200g'},{name:'Chicken Stock',amount:'8 cups'},{name:'Thyme',amount:'2 sprigs'}],steps:['Simmer chicken in stock 1 hour','Remove chicken, shred meat','Dice vegetables','Add vegetables to broth','Simmer until tender','Add noodles and chicken','Cook until noodles done']},
-{id:'m11',name:'Fish and Chips',icon:'🍟',tags:['Comfort','Frozen'],ingredients:[{name:'White Fish Fillets',amount:'4'},{name:'Potatoes',amount:'4 large'},{name:'Flour',amount:'1 cup'},{name:'Beer',amount:'1 cup'},{name:'Oil',amount:'for frying'},{name:'Peas',amount:'1 cup'}],steps:['Cut potatoes into chips','Soak chips in cold water 30 mins','Make batter with flour and beer','Heat oil to 180°C','Fry chips until golden','Coat fish in batter','Fry fish 4-5 mins per side','Serve with peas and tartar sauce']},
+{id:'m11',name:'Fish and Chips',icon:'🍟',tags:['Comfort','Frozen'],ingredients:[{name:'White Fish Fillets',amount:'4'},{name:'Potatoes',amount:'4 large'},{name:'Flour',amount:'1 cup'},{name:'Beer',amount:'1 cup'},{name:'Oil',amount:'for frying'},{name:'Peas',amount:'1 cup'}],steps:['Cut potatoes into chips','Soak chips in cold water 30 mins','Make batter with flour and beer','Heat oil to 180C','Fry chips until golden','Coat fish in batter','Fry fish 4-5 mins per side','Serve with peas and tartar sauce']},
 {id:'m12',name:'Pad Thai',icon:'🍜',tags:['Quick','Fresh'],ingredients:[{name:'Rice Noodles',amount:'250g'},{name:'Shrimp',amount:'300g'},{name:'Eggs',amount:'2'},{name:'Bean Sprouts',amount:'1 cup'},{name:'Peanuts',amount:'1/4 cup'},{name:'Lime',amount:'2'},{name:'Fish Sauce',amount:'3 tbsp'},{name:'Tamarind Paste',amount:'2 tbsp'}],steps:['Soak noodles in warm water','Make sauce with fish sauce and tamarind','Stir fry shrimp, set aside','Scramble eggs in wok','Add noodles and sauce','Toss with bean sprouts','Top with peanuts and lime']},
-{id:'m13',name:'Lasagna',icon:'🍝',tags:['Comfort','Bulk Prep'],ingredients:[{name:'Lasagna Sheets',amount:'12'},{name:'Ground Beef',amount:'500g'},{name:'Ricotta',amount:'500g'},{name:'Mozzarella',amount:'300g'},{name:'Parmesan',amount:'100g'},{name:'Tomato Sauce',amount:'700g'},{name:'Onion',amount:'1'}],steps:['Make meat sauce with beef and tomatoes','Mix ricotta with egg','Layer sauce, pasta, ricotta, mozzarella','Repeat layers 3 times','Top with parmesan','Bake at 180°C for 45 mins','Rest 10 mins before cutting']},
+{id:'m13',name:'Lasagna',icon:'🍝',tags:['Comfort','Bulk Prep'],ingredients:[{name:'Lasagna Sheets',amount:'12'},{name:'Ground Beef',amount:'500g'},{name:'Ricotta',amount:'500g'},{name:'Mozzarella',amount:'300g'},{name:'Parmesan',amount:'100g'},{name:'Tomato Sauce',amount:'700g'},{name:'Onion',amount:'1'}],steps:['Make meat sauce with beef and tomatoes','Mix ricotta with egg','Layer sauce, pasta, ricotta, mozzarella','Repeat layers 3 times','Top with parmesan','Bake at 180C for 45 mins','Rest 10 mins before cutting']},
 {id:'m14',name:'Greek Salad',icon:'🥗',tags:['Healthy','Quick','Vegetarian','Fresh'],ingredients:[{name:'Cucumber',amount:'1'},{name:'Tomatoes',amount:'4'},{name:'Red Onion',amount:'1/2'},{name:'Feta Cheese',amount:'200g'},{name:'Olives',amount:'1/2 cup'},{name:'Olive Oil',amount:'3 tbsp'},{name:'Oregano',amount:'1 tsp'}],steps:['Chop cucumber and tomatoes','Slice red onion thinly','Combine in bowl','Add olives and feta','Dress with oil and oregano']},
-{id:'m15',name:'Chicken Parmesan',icon:'🍗',tags:['Comfort','Fresh'],ingredients:[{name:'Chicken Breast',amount:'4'},{name:'Breadcrumbs',amount:'1 cup'},{name:'Parmesan',amount:'1/2 cup'},{name:'Marinara',amount:'2 cups'},{name:'Mozzarella',amount:'200g'},{name:'Eggs',amount:'2'}],steps:['Pound chicken thin','Dip in egg then breadcrumb-parmesan mix','Fry until golden','Place in baking dish','Top with marinara and mozzarella','Bake 20 mins at 200°C','Serve over pasta']},
+{id:'m15',name:'Chicken Parmesan',icon:'🍗',tags:['Comfort','Fresh'],ingredients:[{name:'Chicken Breast',amount:'4'},{name:'Breadcrumbs',amount:'1 cup'},{name:'Parmesan',amount:'1/2 cup'},{name:'Marinara',amount:'2 cups'},{name:'Mozzarella',amount:'200g'},{name:'Eggs',amount:'2'}],steps:['Pound chicken thin','Dip in egg then breadcrumb-parmesan mix','Fry until golden','Place in baking dish','Top with marinara and mozzarella','Bake 20 mins at 200C','Serve over pasta']},
 {id:'m16',name:'Ramen',icon:'🍜',tags:['Comfort','Quick'],ingredients:[{name:'Ramen Noodles',amount:'4 packets'},{name:'Chicken Stock',amount:'8 cups'},{name:'Soy Sauce',amount:'4 tbsp'},{name:'Eggs',amount:'4'},{name:'Green Onions',amount:'4'},{name:'Nori',amount:'4 sheets'},{name:'Pork Belly',amount:'300g'}],steps:['Simmer pork in stock 2 hours','Soft boil eggs 6.5 mins','Heat stock with soy sauce','Cook noodles separately','Assemble: noodles, broth, pork','Top with egg, nori, green onions']},
 {id:'m17',name:'Quesadillas',icon:'🌯',tags:['Quick','Comfort'],ingredients:[{name:'Tortillas',amount:'4 large'},{name:'Cheese',amount:'2 cups'},{name:'Chicken',amount:'2 cups'},{name:'Bell Peppers',amount:'2'},{name:'Salsa',amount:'1 cup'},{name:'Sour Cream',amount:'1/2 cup'}],steps:['Shred cooked chicken','Slice peppers','Lay tortilla, add cheese and fillings','Fold in half','Cook on griddle until golden','Flip and cook other side','Serve with salsa and sour cream']},
-{id:'m18',name:'Shepherds Pie',icon:'🥧',tags:['Comfort','Bulk Prep'],ingredients:[{name:'Ground Lamb',amount:'500g'},{name:'Potatoes',amount:'1kg'},{name:'Carrots',amount:'2'},{name:'Peas',amount:'1 cup'},{name:'Onion',amount:'1'},{name:'Beef Stock',amount:'1 cup'},{name:'Butter',amount:'50g'}],steps:['Brown lamb with onion','Add diced carrots and stock','Simmer 20 mins','Add peas','Make mashed potatoes with butter','Spread meat in dish','Top with mashed potatoes','Bake at 200°C for 25 mins']},
+{id:'m18',name:'Shepherds Pie',icon:'🥧',tags:['Comfort','Bulk Prep'],ingredients:[{name:'Ground Lamb',amount:'500g'},{name:'Potatoes',amount:'1kg'},{name:'Carrots',amount:'2'},{name:'Peas',amount:'1 cup'},{name:'Onion',amount:'1'},{name:'Beef Stock',amount:'1 cup'},{name:'Butter',amount:'50g'}],steps:['Brown lamb with onion','Add diced carrots and stock','Simmer 20 mins','Add peas','Make mashed potatoes with butter','Spread meat in dish','Top with mashed potatoes','Bake at 200C for 25 mins']},
 {id:'m19',name:'Pancakes',icon:'🥞',tags:['Quick','Comfort'],ingredients:[{name:'Flour',amount:'2 cups'},{name:'Milk',amount:'1.5 cups'},{name:'Eggs',amount:'2'},{name:'Butter',amount:'3 tbsp'},{name:'Sugar',amount:'2 tbsp'},{name:'Baking Powder',amount:'2 tsp'},{name:'Maple Syrup',amount:'for serving'}],steps:['Mix dry ingredients','Whisk wet ingredients','Combine until just mixed','Heat griddle to medium','Pour 1/4 cup batter per pancake','Flip when bubbles form','Serve with butter and syrup']},
 {id:'m20',name:'Burrito Bowl',icon:'🌯',tags:['Healthy','Fresh'],ingredients:[{name:'Rice',amount:'2 cups'},{name:'Black Beans',amount:'400g can'},{name:'Chicken',amount:'500g'},{name:'Corn',amount:'1 cup'},{name:'Avocado',amount:'2'},{name:'Salsa',amount:'1 cup'},{name:'Lime',amount:'2'}],steps:['Cook and season rice with lime','Grill seasoned chicken, slice','Warm black beans','Chop avocado','Assemble bowls: rice, beans, chicken','Top with corn, avocado, salsa']},
 {id:'m21',name:'French Toast',icon:'🍞',tags:['Quick','Comfort'],ingredients:[{name:'Bread',amount:'8 slices'},{name:'Eggs',amount:'4'},{name:'Milk',amount:'1/2 cup'},{name:'Cinnamon',amount:'1 tsp'},{name:'Vanilla',amount:'1 tsp'},{name:'Butter',amount:'2 tbsp'},{name:'Maple Syrup',amount:'for serving'}],steps:['Whisk eggs, milk, cinnamon, vanilla','Heat butter in pan','Dip bread in egg mixture','Cook until golden each side','Serve with syrup and berries']},
@@ -529,105 +537,131 @@ const STARTER_MEALS=[
 {id:'m25',name:'Teriyaki Chicken',icon:'🍗',tags:['Quick','Healthy'],ingredients:[{name:'Chicken Thighs',amount:'600g'},{name:'Soy Sauce',amount:'1/2 cup'},{name:'Mirin',amount:'1/4 cup'},{name:'Sugar',amount:'2 tbsp'},{name:'Ginger',amount:'1 tbsp'},{name:'Rice',amount:'2 cups'},{name:'Broccoli',amount:'2 cups'}],steps:['Make sauce: soy, mirin, sugar, ginger','Grill or pan-fry chicken','Brush with sauce while cooking','Steam broccoli','Cook rice','Slice chicken, serve over rice','Drizzle extra sauce']}
 ];
 const BADGES=[
-{id:1,icon:'👨‍🍳',name:'First Meal',desc:'Cook your first meal'},
-{id:2,icon:'🥄',name:'5 Meals',desc:'Cook 5 meals'},
-{id:3,icon:'🍳',name:'10 Meals',desc:'Cook 10 meals'},
-{id:4,icon:'👩‍🍳',name:'25 Meals',desc:'Cook 25 meals'},
-{id:5,icon:'🧑‍🍳',name:'50 Meals',desc:'Cook 50 meals'},
-{id:6,icon:'🏆',name:'Century Chef',desc:'Cook 100 meals'},
-{id:7,icon:'🌟',name:'Master Chef',desc:'Cook 200 meals'},
-{id:8,icon:'👑',name:'Legendary Chef',desc:'Cook 500 meals'},
-{id:9,icon:'🥗',name:'Fresh Start',desc:'Cook 5 fresh meals'},
-{id:10,icon:'🌿',name:'Fresh Fanatic',desc:'Cook 25 fresh meals'},
-{id:11,icon:'🥬',name:'Fresh Master',desc:'Cook 50 fresh meals'},
-{id:12,icon:'🥦',name:'Veggie Lover',desc:'Cook 5 vegetarian meals'},
-{id:13,icon:'🥕',name:'Veggie Champion',desc:'Cook 25 vegetarian meals'},
-{id:14,icon:'🌱',name:'Veggie Legend',desc:'Cook 50 vegetarian meals'},
-{id:15,icon:'❄️',name:'Freezer Friend',desc:'Cook 5 frozen meals'},
-{id:16,icon:'🧊',name:'Freezer Pro',desc:'Cook 25 frozen meals'},
-{id:17,icon:'⚡',name:'Quick Cook',desc:'Cook 5 quick meals'},
-{id:18,icon:'🚀',name:'Speed Demon',desc:'Cook 25 quick meals'},
-{id:19,icon:'💨',name:'Lightning Chef',desc:'Cook 50 quick meals'},
-{id:20,icon:'🍔',name:'Comfort Seeker',desc:'Cook 5 comfort meals'},
-{id:21,icon:'🛋️',name:'Comfort King',desc:'Cook 25 comfort meals'},
-{id:22,icon:'💚',name:'Health Nut',desc:'Cook 5 healthy meals'},
-{id:23,icon:'🏃',name:'Health Hero',desc:'Cook 25 healthy meals'},
-{id:24,icon:'💪',name:'Health Champion',desc:'Cook 50 healthy meals'},
-{id:25,icon:'📦',name:'Bulk Beginner',desc:'Cook 5 bulk prep meals'},
-{id:26,icon:'📦📦',name:'Bulk Master',desc:'Cook 25 bulk prep meals'},
-{id:27,icon:'🗓️',name:'Week Planner',desc:'Plan a full week of meals'},
-{id:28,icon:'📅',name:'Month Planner',desc:'Plan 4 weeks in a row'},
-{id:29,icon:'🎯',name:'Consistent Cook',desc:'Cook 7 days in a row'},
-{id:30,icon:'🔥',name:'On Fire',desc:'Cook 14 days in a row'},
-{id:31,icon:'💎',name:'Diamond Streak',desc:'Cook 30 days in a row'},
-{id:32,icon:'🎰',name:'Lucky Spin',desc:'Use the meal picker'},
-{id:33,icon:'🎲',name:'Spin Master',desc:'Use meal picker 25 times'},
-{id:34,icon:'🛒',name:'First Shop',desc:'Complete a shopping list'},
-{id:35,icon:'🛍️',name:'Shopping Pro',desc:'Complete 10 shopping lists'},
-{id:36,icon:'🏪',name:'Shopping Legend',desc:'Complete 50 shopping lists'},
-{id:37,icon:'📝',name:'Recipe Creator',desc:'Create your first meal'},
-{id:38,icon:'📚',name:'Recipe Author',desc:'Create 10 meals'},
-{id:39,icon:'📖',name:'Recipe Master',desc:'Create 25 meals'},
-{id:40,icon:'✏️',name:'Recipe Editor',desc:'Edit a meal'},
-{id:41,icon:'🏷️',name:'Tag Creator',desc:'Create a custom tag'},
-{id:42,icon:'🌍',name:'World Cuisine',desc:'Try 10 different cuisine types'},
-{id:43,icon:'🍝',name:'Pasta Lover',desc:'Cook 10 pasta dishes'},
-{id:44,icon:'🍚',name:'Rice Master',desc:'Cook 10 rice dishes'},
-{id:45,icon:'🥩',name:'Meat Expert',desc:'Cook 25 meat dishes'},
-{id:46,icon:'🐟',name:'Seafood Star',desc:'Cook 10 seafood dishes'},
-{id:47,icon:'🐔',name:'Chicken Champion',desc:'Cook 25 chicken dishes'},
-{id:48,icon:'🥪',name:'Sandwich Artist',desc:'Make 10 sandwiches'},
-{id:49,icon:'🥙',name:'Wrap Master',desc:'Make 10 wraps/burritos'},
-{id:50,icon:'🍲',name:'Soup Specialist',desc:'Make 10 soups'},
-{id:51,icon:'🍜',name:'Noodle Ninja',desc:'Make 15 noodle dishes'},
-{id:52,icon:'🌮',name:'Taco Tuesday',desc:'Make tacos on a Tuesday'},
-{id:53,icon:'🍕',name:'Pizza Party',desc:'Make 5 pizzas'},
-{id:54,icon:'🥞',name:'Breakfast Boss',desc:'Make 10 breakfast meals'},
-{id:55,icon:'🍳',name:'Egg Expert',desc:'Make 15 egg dishes'},
-{id:56,icon:'🥗',name:'Salad Specialist',desc:'Make 10 salads'},
-{id:57,icon:'🧁',name:'Sweet Tooth',desc:'Make 5 desserts'},
-{id:58,icon:'🎂',name:'Baker',desc:'Make 10 baked goods'},
-{id:59,icon:'🍪',name:'Cookie Monster',desc:'Make 5 cookie batches'},
-{id:60,icon:'☕',name:'Morning Ritual',desc:'Log breakfast 7 days in a row'},
-{id:61,icon:'🌙',name:'Dinner Regular',desc:'Log dinner 14 days in a row'},
-{id:62,icon:'📸',name:'Lunch Lover',desc:'Log lunch 14 days in a row'},
-{id:63,icon:'🍱',name:'Meal Prepper',desc:'Prep meals for 3+ days'},
-{id:64,icon:'👥',name:'Cooking Partner',desc:'Cook together 5 times'},
-{id:65,icon:'💑',name:'Dynamic Duo',desc:'Cook together 25 times'},
-{id:66,icon:'❤️',name:'Couple Goals',desc:'Cook together 50 times'},
-{id:67,icon:'🎁',name:'Gift Chef',desc:'Cook for someone else'},
-{id:68,icon:'🏠',name:'Home Cook',desc:'Cook at home 50 times'},
-{id:69,icon:'🔪',name:'Knife Skills',desc:'Make 10 meals with chopping'},
-{id:70,icon:'🔥',name:'Grill Master',desc:'Grill 10 meals'},
-{id:71,icon:'♨️',name:'Slow Cooker',desc:'Use slow cooker 5 times'},
-{id:72,icon:'🫕',name:'One Pot Wonder',desc:'Make 10 one-pot meals'},
-{id:73,icon:'🥘',name:'Stir Fry Star',desc:'Make 10 stir fry dishes'},
-{id:74,icon:'🍖',name:'BBQ Boss',desc:'BBQ 5 meals'},
-{id:75,icon:'🥧',name:'Pie Maker',desc:'Make 3 pies'},
-{id:76,icon:'🎃',name:'Seasonal Chef',desc:'Cook seasonal meals'},
-{id:77,icon:'🦃',name:'Holiday Hero',desc:'Cook a holiday meal'},
-{id:78,icon:'🎄',name:'Festive Feast',desc:'Cook Christmas dinner'},
-{id:79,icon:'❌',name:'No Fast Food',desc:'No fast food for a week'},
-{id:80,icon:'🚫',name:'Clean Eating',desc:'No fast food for a month'},
-{id:81,icon:'💯',name:'Pure Chef',desc:'No fast food for 3 months'},
-{id:82,icon:'🌈',name:'Rainbow Plate',desc:'Eat 5 colors in one meal'},
-{id:83,icon:'🥑',name:'Healthy Choice',desc:'Choose healthy 10 times'},
-{id:84,icon:'💧',name:'Hydrated Chef',desc:'Log water with meals'},
-{id:85,icon:'🧂',name:'Seasoning Pro',desc:'Use 5+ seasonings'},
-{id:86,icon:'🌶️',name:'Spice Lover',desc:'Make 10 spicy dishes'},
-{id:87,icon:'🍋',name:'Citrus Fan',desc:'Use citrus in 10 dishes'},
-{id:88,icon:'🧄',name:'Garlic Guru',desc:'Use garlic in 25 dishes'},
-{id:89,icon:'🧅',name:'Onion Expert',desc:'Use onions in 25 dishes'},
-{id:90,icon:'🍅',name:'Tomato Fan',desc:'Use tomatoes in 25 dishes'},
-{id:91,icon:'🌽',name:'Corn Lover',desc:'Use corn in 10 dishes'},
-{id:92,icon:'🥔',name:'Potato Pro',desc:'Use potatoes in 15 dishes'},
-{id:93,icon:'🍄',name:'Mushroom Master',desc:'Use mushrooms in 10 dishes'},
-{id:94,icon:'🧀',name:'Cheese Please',desc:'Use cheese in 25 dishes'},
-{id:95,icon:'🥛',name:'Dairy Fan',desc:'Use dairy in 25 dishes'},
-{id:96,icon:'🌾',name:'Grain Guru',desc:'Use whole grains 15 times'},
-{id:97,icon:'🫘',name:'Bean Counter',desc:'Use beans in 10 dishes'},
-{id:98,icon:'🥜',name:'Nutty Chef',desc:'Use nuts in 10 dishes'},
-{id:99,icon:'🍯',name:'Sweet Chef',desc:'Use honey in 5 dishes'},
+// Cooking milestones (meals logged in past)
+{id:1,icon:'🍳',name:'First Bite',desc:'Log your first meal'},
+{id:2,icon:'🥄',name:'Getting Started',desc:'Log 5 meals'},
+{id:3,icon:'🍴',name:'Kitchen Regular',desc:'Log 10 meals'},
+{id:4,icon:'🍽',name:'Home Cook',desc:'Log 25 meals'},
+{id:5,icon:'👨‍🍳',name:'Dedicated Chef',desc:'Log 50 meals'},
+{id:6,icon:'👩‍🍳',name:'Master Chef',desc:'Log 100 meals'},
+{id:7,icon:'🏆',name:'Kitchen Legend',desc:'Log 200 meals'},
+{id:8,icon:'👑',name:'Culinary Royalty',desc:'Log 500 meals'},
+// Planning milestones (meals scheduled for future)
+{id:9,icon:'📅',name:'Forward Thinker',desc:'Plan a meal for tomorrow'},
+{id:10,icon:'🗓',name:'Week Ahead',desc:'Plan a meal 7+ days out'},
+{id:11,icon:'📆',name:'Month Planner',desc:'Plan a meal 30+ days out'},
+{id:12,icon:'🔮',name:'Fortune Teller',desc:'Plan a meal 60+ days out'},
+// Weekly planning
+{id:13,icon:'📋',name:'Weekly Planner',desc:'Plan all 14 slots for a week'},
+{id:14,icon:'📝',name:'Two Week Warrior',desc:'Plan 2 full weeks'},
+{id:15,icon:'🗒',name:'Month of Meals',desc:'Plan 4 full weeks'},
+// Streaks (consecutive days with logged meals)
+{id:16,icon:'🔥',name:'On a Roll',desc:'Log meals 3 days in a row'},
+{id:17,icon:'⚡',name:'Week Streak',desc:'Log meals 7 days in a row'},
+{id:18,icon:'💫',name:'Two Week Streak',desc:'Log meals 14 days in a row'},
+{id:19,icon:'🌟',name:'Month Streak',desc:'Log meals 30 days in a row'},
+{id:20,icon:'💎',name:'Diamond Streak',desc:'Log meals 60 days in a row'},
+// Lunch specific
+{id:21,icon:'☀️',name:'Lunch Starter',desc:'Log 5 lunches'},
+{id:22,icon:'🌞',name:'Lunch Regular',desc:'Log 25 lunches'},
+{id:23,icon:'🌅',name:'Lunch Champion',desc:'Log 50 lunches'},
+// Dinner specific
+{id:24,icon:'🌙',name:'Dinner Starter',desc:'Log 5 dinners'},
+{id:25,icon:'🌃',name:'Dinner Regular',desc:'Log 25 dinners'},
+{id:26,icon:'🌌',name:'Dinner Champion',desc:'Log 50 dinners'},
+// Both meals in a day
+{id:27,icon:'🍱',name:'Full Day',desc:'Log both lunch and dinner in one day'},
+{id:28,icon:'📦',name:'Full Week',desc:'Log both meals every day for a week'},
+// Meal Picker usage
+{id:29,icon:'🎰',name:'Lucky Spin',desc:'Use the meal picker once'},
+{id:30,icon:'🎲',name:'Spin Fan',desc:'Use the meal picker 10 times'},
+{id:31,icon:'🎯',name:'Spin Master',desc:'Use the meal picker 50 times'},
+{id:32,icon:'🎪',name:'Spin Legend',desc:'Use the meal picker 100 times'},
+// Shopping cart
+{id:33,icon:'🛒',name:'First Shop',desc:'Add items to cart'},
+{id:34,icon:'✅',name:'List Maker',desc:'Check off 10 cart items'},
+{id:35,icon:'🛍',name:'Shopping Pro',desc:'Check off 50 cart items'},
+{id:36,icon:'🏪',name:'Shopping Master',desc:'Check off 100 cart items'},
+// Creating meals
+{id:37,icon:'📝',name:'Recipe Writer',desc:'Create your first meal'},
+{id:38,icon:'📚',name:'Recipe Author',desc:'Create 5 meals'},
+{id:39,icon:'📖',name:'Recipe Publisher',desc:'Create 10 meals'},
+{id:40,icon:'🏛',name:'Recipe Librarian',desc:'Create 25 meals'},
+// Editing meals
+{id:41,icon:'✏️',name:'Editor',desc:'Edit a meal'},
+{id:42,icon:'🔧',name:'Tinkerer',desc:'Edit 10 meals'},
+// Tag usage (logged meals with specific tags)
+{id:43,icon:'🥗',name:'Fresh Start',desc:'Log 5 Fresh meals'},
+{id:44,icon:'🌿',name:'Fresh Fan',desc:'Log 25 Fresh meals'},
+{id:45,icon:'🌱',name:'Fresh Master',desc:'Log 50 Fresh meals'},
+{id:46,icon:'❄️',name:'Freezer Friend',desc:'Log 5 Frozen meals'},
+{id:47,icon:'🧊',name:'Freezer Fan',desc:'Log 25 Frozen meals'},
+{id:48,icon:'⚡',name:'Quick Cook',desc:'Log 5 Quick meals'},
+{id:49,icon:'💨',name:'Speed Chef',desc:'Log 25 Quick meals'},
+{id:50,icon:'🚀',name:'Lightning Fast',desc:'Log 50 Quick meals'},
+{id:51,icon:'🛋',name:'Comfort Seeker',desc:'Log 5 Comfort meals'},
+{id:52,icon:'🏠',name:'Comfort Lover',desc:'Log 25 Comfort meals'},
+{id:53,icon:'💚',name:'Health Starter',desc:'Log 5 Healthy meals'},
+{id:54,icon:'💪',name:'Health Hero',desc:'Log 25 Healthy meals'},
+{id:55,icon:'🏃',name:'Health Champion',desc:'Log 50 Healthy meals'},
+{id:56,icon:'🥬',name:'Veggie Curious',desc:'Log 5 Vegetarian meals'},
+{id:57,icon:'🥦',name:'Veggie Lover',desc:'Log 25 Vegetarian meals'},
+{id:58,icon:'🌽',name:'Veggie Master',desc:'Log 50 Vegetarian meals'},
+{id:59,icon:'📦',name:'Bulk Starter',desc:'Log 5 Bulk Prep meals'},
+{id:60,icon:'🗃',name:'Bulk Master',desc:'Log 25 Bulk Prep meals'},
+// Variety
+{id:61,icon:'🎨',name:'Variety Pack',desc:'Log 5 different meals'},
+{id:62,icon:'🌈',name:'Rainbow Menu',desc:'Log 10 different meals'},
+{id:63,icon:'🎭',name:'Diverse Diner',desc:'Log 25 different meals'},
+{id:64,icon:'🌍',name:'World Eater',desc:'Log 50 different meals'},
+// Cooking together
+{id:65,icon:'👥',name:'Team Cook',desc:'Assign both people as cooking'},
+{id:66,icon:'💑',name:'Cooking Duo',desc:'Cook together 10 times'},
+{id:67,icon:'❤️',name:'Kitchen Partners',desc:'Cook together 25 times'},
+// Same meal repeat
+{id:68,icon:'🔁',name:'Repeat Customer',desc:'Log the same meal 5 times'},
+{id:69,icon:'💝',name:'Favorite Found',desc:'Log the same meal 10 times'},
+{id:70,icon:'😍',name:'True Love',desc:'Log the same meal 25 times'},
+// Calendar coverage
+{id:71,icon:'📊',name:'Half Full',desc:'Fill 50% of a week'},
+{id:72,icon:'📈',name:'Almost There',desc:'Fill 75% of a week'},
+{id:73,icon:'💯',name:'Perfect Week',desc:'Fill 100% of a week'},
+// Time-based
+{id:74,icon:'🌅',name:'Early Bird',desc:'Plan breakfast/lunch before 9am'},
+{id:75,icon:'🦉',name:'Night Owl',desc:'Plan dinner after 8pm'},
+// App milestones
+{id:76,icon:'📱',name:'App Explorer',desc:'Visit all 5 tabs'},
+{id:77,icon:'⚙️',name:'Customizer',desc:'Open settings'},
+{id:78,icon:'🏷',name:'Tag Creator',desc:'Create a custom tag'},
+// Monthly achievements
+{id:79,icon:'📅',name:'January Chef',desc:'Log 10+ meals in a month'},
+{id:80,icon:'🗓',name:'Monthly Master',desc:'Log 30+ meals in a month'},
+{id:81,icon:'🎖',name:'Monthly Legend',desc:'Log 50+ meals in a month'},
+// Cart from meals
+{id:82,icon:'🧺',name:'Smart Shopper',desc:'Add ingredients from a meal to cart'},
+{id:83,icon:'📋',name:'Meal Prepper',desc:'Add 5 meals worth of ingredients'},
+{id:84,icon:'🛒',name:'Bulk Buyer',desc:'Add 10 meals worth of ingredients'},
+// Clearing/completing
+{id:85,icon:'✨',name:'Clean Slate',desc:'Clear the shopping cart'},
+{id:86,icon:'🧹',name:'Fresh Start',desc:'Clear cart 5 times'},
+// Specific counts
+{id:87,icon:'🔟',name:'Ten Down',desc:'Log 10 meals total'},
+{id:88,icon:'2️⃣',name:'Twenty Club',desc:'Log 20 meals total'},
+{id:89,icon:'5️⃣',name:'Fifty Milestone',desc:'Log 50 meals total'},
+{id:90,icon:'💯',name:'Century Chef',desc:'Log 100 meals total'},
+// Weekend cooking
+{id:91,icon:'🎉',name:'Weekend Warrior',desc:'Log meals on Saturday and Sunday'},
+{id:92,icon:'🏖',name:'Weekend Regular',desc:'Log 10 weekend meals'},
+// Tags explored
+{id:93,icon:'🔍',name:'Tag Explorer',desc:'Use 3 different tags'},
+{id:94,icon:'🏅',name:'Tag Collector',desc:'Use 5 different tags'},
+{id:95,icon:'🎗',name:'Tag Master',desc:'Use all default tags'},
+// Long term
+{id:96,icon:'📆',name:'One Month In',desc:'Use the app for 30 days'},
+{id:97,icon:'🗓',name:'Three Months',desc:'Use the app for 90 days'},
+{id:98,icon:'📅',name:'Six Months',desc:'Use the app for 180 days'},
+{id:99,icon:'🎂',name:'One Year',desc:'Use the app for 365 days'},
+// Ultimate
 {id:100,icon:'⭐',name:'Tempero Master',desc:'Unlock 50 badges'}
 ];
 let state={pin:'',data:{meals:STARTER_MEALS,calendar:{},cart:[],badges:{},tags:DEFAULT_TAGS,people:DEFAULT_PEOPLE,cookLog:[],settings:{}},weekOffset:0,selectedMeal:null,selectedSlot:null,editingMeal:null,mealTags:[],mealIngredients:[],mealSteps:[],tagFilter:'all',pickerFilter:'all',pickerIngredient:'',recipeViewMode:'list',recipeStep:0,calendarMealType:'lunch',addToCalendarMealId:null,pat:localStorage.getItem('github_pat')||''};
@@ -640,8 +674,10 @@ function pinInput(n){if(state.pin.length<4){state.pin+=n;updateDots();if(state.p
 $$('.pin-key').forEach(k=>{const handler=()=>{if(k.dataset.num!==undefined)pinInput(k.dataset.num);else if(k.dataset.action==='back'){state.pin=state.pin.slice(0,-1);updateDots();}};k.addEventListener('click',handler);k.addEventListener('touchend',e=>{e.preventDefault();handler();},{passive:false});});
 function setDate(){$('headerDate').textContent=new Date().toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'});}
 $$('.nav-item[data-page]').forEach(n=>{const doNav=()=>{const p=n.dataset.page;$$('.page').forEach(x=>x.classList.remove('active'));$(p).classList.add('active');$$('.nav-item').forEach(x=>x.classList.remove('active'));n.classList.add('active');if(p==='pageCalendar')renderCalendar();if(p==='pageMeals')renderMeals();if(p==='pagePicker')renderPicker();if(p==='pageCart')renderCart();if(p==='pageAwards')renderAwards();};n.addEventListener('click',doNav);});
-async function loadData(){if(!state.pat)return;$('syncStatus').classList.add('syncing');try{const u=await fetch('https://api.github.com/user',{headers:{'Authorization':'Bearer '+state.pat}});if(u.ok)CONFIG.REPO_OWNER=(await u.json()).login;const r=await fetch('https://api.github.com/repos/'+CONFIG.REPO_OWNER+'/'+CONFIG.REPO_NAME+'/contents/'+CONFIG.DATA_FILE,{headers:{'Authorization':'Bearer '+state.pat}});if(r.ok){const d=await r.json();const loaded=JSON.parse(atob(d.content));state.data={...state.data,...loaded};if(!state.data.meals||!state.data.meals.length)state.data.meals=STARTER_MEALS;}}catch(e){console.error(e);}$('syncStatus').classList.remove('syncing');renderCalendar();renderMeals();}
-async function saveData(){if(!state.pat||!CONFIG.REPO_OWNER){showToast('Configure GitHub token in settings',true);return false;}$('syncStatus').classList.add('syncing');try{const g=await fetch('https://api.github.com/repos/'+CONFIG.REPO_OWNER+'/'+CONFIG.REPO_NAME+'/contents/'+CONFIG.DATA_FILE,{headers:{'Authorization':'Bearer '+state.pat}});let sha=g.ok?(await g.json()).sha:null;const body={message:'Update '+new Date().toISOString(),content:btoa(unescape(encodeURIComponent(JSON.stringify(state.data,null,2))))};if(sha)body.sha=sha;const s=await fetch('https://api.github.com/repos/'+CONFIG.REPO_OWNER+'/'+CONFIG.REPO_NAME+'/contents/'+CONFIG.DATA_FILE,{method:'PUT',headers:{'Authorization':'Bearer '+state.pat,'Content-Type':'application/json'},body:JSON.stringify(body)});$('syncStatus').classList.remove('syncing');return s.ok;}catch(e){console.error(e);$('syncStatus').classList.remove('syncing');return false;}}
+function saveToLocal(){try{localStorage.setItem('tempero_data',JSON.stringify(state.data));return true;}catch(e){console.error('Local save failed:',e);return false;}}
+function loadFromLocal(){try{const saved=localStorage.getItem('tempero_data');if(saved){const loaded=JSON.parse(saved);state.data={...state.data,...loaded};}if(!state.data.meals||!state.data.meals.length)state.data.meals=STARTER_MEALS;return true;}catch(e){console.error('Local load failed:',e);return false;}}
+async function loadData(){loadFromLocal();if(state.pat){$('syncStatus').classList.add('syncing');try{const u=await fetch('https://api.github.com/user',{headers:{'Authorization':'Bearer '+state.pat}});if(u.ok)CONFIG.REPO_OWNER=(await u.json()).login;const r=await fetch('https://api.github.com/repos/'+CONFIG.REPO_OWNER+'/'+CONFIG.REPO_NAME+'/contents/'+CONFIG.DATA_FILE,{headers:{'Authorization':'Bearer '+state.pat}});if(r.ok){const d=await r.json();const loaded=JSON.parse(atob(d.content));state.data={...state.data,...loaded};saveToLocal();}}catch(e){console.error(e);}$('syncStatus').classList.remove('syncing');}renderCalendar();renderMeals();}
+async function saveData(){saveToLocal();if(!state.pat||!CONFIG.REPO_OWNER)return true;$('syncStatus').classList.add('syncing');try{const g=await fetch('https://api.github.com/repos/'+CONFIG.REPO_OWNER+'/'+CONFIG.REPO_NAME+'/contents/'+CONFIG.DATA_FILE,{headers:{'Authorization':'Bearer '+state.pat}});let sha=g.ok?(await g.json()).sha:null;const body={message:'Update '+new Date().toISOString(),content:btoa(unescape(encodeURIComponent(JSON.stringify(state.data,null,2))))};if(sha)body.sha=sha;await fetch('https://api.github.com/repos/'+CONFIG.REPO_OWNER+'/'+CONFIG.REPO_NAME+'/contents/'+CONFIG.DATA_FILE,{method:'PUT',headers:{'Authorization':'Bearer '+state.pat,'Content-Type':'application/json'},body:JSON.stringify(body)});$('syncStatus').classList.remove('syncing');return true;}catch(e){console.error(e);$('syncStatus').classList.remove('syncing');return true;}}
 function showToast(msg,err){const t=$('toast');t.textContent=msg;t.classList.toggle('error',!!err);t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3000);}
 function renderCalendar(){const dates=getWeekDates(state.weekOffset);const start=fmtDateDisplay(dates[0]);const end=fmtDateDisplay(dates[6]);$('weekTitle').textContent=start+' - '+end;let html='';dates.forEach(d=>{const key=fmtDate(d);const dayData=state.data.calendar[key]||{};const lunch=dayData.lunch;const dinner=dayData.dinner;const isToday=fmtDate(new Date())===key;html+=`<div class="day-card"><div class="day-header"><span>${d.toLocaleDateString('en-US',{weekday:'long'})}</span><span class="day-date">${isToday?'Today':d.toLocaleDateString('en-US',{month:'short',day:'numeric'})}</span></div>`;html+=renderMealSlot(key,'lunch',lunch);html+=renderMealSlot(key,'dinner',dinner);html+='</div>';});$('weekDays').innerHTML=html;}
 function renderMealSlot(date,type,data){const meal=data?state.data.meals.find(m=>m.id===data.mealId):null;const icon=type==='lunch'?'🌞':'🌙';const typeName=type.charAt(0).toUpperCase()+type.slice(1);if(!meal){return `<div class="meal-slot" onclick="openSlotModal('${date}','${type}')"><div class="meal-slot-icon">${icon}</div><div class="meal-slot-content"><div class="meal-slot-type">${typeName}</div><div class="meal-slot-name empty">No meal assigned</div></div><div class="meal-slot-arrow">+</div></div>`;}
@@ -690,7 +726,8 @@ function getFilteredMeals(){return state.data.meals.filter(m=>{if(state.pickerFi
 function buildSlotReel(){const meals=getFilteredMeals();if(!meals.length){$('slotReel').innerHTML='<div class="slot-item"><span class="slot-item-name" style="color:var(--text-muted)">No meals match filters</span></div>';return;}
 let items=[];for(let i=0;i<3;i++)items=items.concat(meals);let html='';items.forEach(m=>{html+=`<div class="slot-item"><span class="slot-item-icon">${m.icon||'🍽️'}</span><span class="slot-item-name">${m.name}</span></div>`;});$('slotReel').innerHTML=html;$('slotReel').style.transform='translateY(0)';}
 $('pickerIngredientInput').addEventListener('input',e=>{state.pickerIngredient=e.target.value.toLowerCase();buildSlotReel();});
-$('spinBtn').addEventListener('click',()=>{const meals=getFilteredMeals();if(!meals.length){showToast('No meals match filters',true);return;}$('spinBtn').disabled=true;$('spinResult').classList.remove('show');const winnerIdx=Math.floor(Math.random()*meals.length);const winner=meals[winnerIdx];state.selectedMeal=winner.id;const reel=$('slotReel');const itemHeight=70;const totalItems=meals.length*3;const winnerPos=meals.length+winnerIdx;const targetY=-(winnerPos*itemHeight)+(140-itemHeight/2);let currentY=0;const spins=2;const totalDistance=spins*totalItems*itemHeight+Math.abs(targetY);const duration=3000;const startTime=Date.now();function animate(){const elapsed=Date.now()-startTime;const progress=Math.min(elapsed/duration,1);const eased=1-Math.pow(1-progress,3);currentY=-eased*totalDistance;const loopY=currentY%(totalItems*itemHeight);reel.style.transform=`translateY(${loopY}px)`;if(progress<1){requestAnimationFrame(animate);}else{reel.style.transform=`translateY(${targetY}px)`;$('spinBtn').disabled=false;$('spinResultMeal').textContent=winner.icon+' '+winner.name;$('spinResult').classList.add('show');if(!state.data.badges)state.data.badges={};state.data.badges['spin_count']=(state.data.badges['spin_count']||0)+1;checkBadges();}}animate();});
+function createConfetti(){const container=document.createElement('div');container.className='confetti-container';document.body.appendChild(container);const colors=['#4ade80','#fb923c','#fbbf24','#f472b6','#60a5fa','#ef4444','#a78bfa'];const shapes=['🎉','🎊','✨','⭐','🌟','💚','🧡'];for(let i=0;i<50;i++){const confetti=document.createElement('div');confetti.className='confetti';confetti.style.left=Math.random()*100+'%';confetti.style.animationDelay=Math.random()*0.5+'s';confetti.style.animationDuration=(2+Math.random()*2)+'s';if(Math.random()>0.5){confetti.style.backgroundColor=colors[Math.floor(Math.random()*colors.length)];confetti.style.borderRadius=Math.random()>0.5?'50%':'0';}else{confetti.textContent=shapes[Math.floor(Math.random()*shapes.length)];confetti.style.fontSize='20px';confetti.style.background='none';}container.appendChild(confetti);}setTimeout(()=>container.remove(),4000);}
+$('spinBtn').addEventListener('click',()=>{const meals=getFilteredMeals();if(!meals.length){showToast('No meals match filters',true);return;}$('spinBtn').disabled=true;$('spinResult').classList.remove('show');const winnerIdx=Math.floor(Math.random()*meals.length);const winner=meals[winnerIdx];state.selectedMeal=winner.id;const reel=$('slotReel');const itemHeight=70;const totalItems=meals.length*3;const winnerPos=meals.length+winnerIdx;const targetY=-(winnerPos*itemHeight)+(140-itemHeight/2);let currentY=0;const spins=2;const totalDistance=spins*totalItems*itemHeight+Math.abs(targetY);const duration=3000;const startTime=Date.now();function animate(){const elapsed=Date.now()-startTime;const progress=Math.min(elapsed/duration,1);const eased=1-Math.pow(1-progress,3);currentY=-eased*totalDistance;const loopY=currentY%(totalItems*itemHeight);reel.style.transform=`translateY(${loopY}px)`;if(progress<1){requestAnimationFrame(animate);}else{reel.style.transform=`translateY(${targetY}px)`;$('spinBtn').disabled=false;$('spinResultMeal').textContent=(winner.icon||'🍽')+' '+winner.name;$('spinResult').classList.add('show');createConfetti();if(!state.data.badges)state.data.badges={};state.data.badges['spin_count']=(state.data.badges['spin_count']||0)+1;checkBadges();saveData();}}animate();});
 $('spinMakeBtn').addEventListener('click',()=>{openRecipe(state.selectedMeal);});
 $('spinCalendarBtn').addEventListener('click',()=>{openAddToCalendar(state.selectedMeal);});
 function renderCart(){const cart=state.data.cart||[];$('cartCount').textContent=cart.length+' item'+(cart.length!==1?'s':'');if(!cart.length){$('cartItems').innerHTML='<div class="empty-state"><div class="empty-state-icon">🛒</div><p>Your cart is empty</p></div>';return;}
@@ -736,8 +773,9 @@ function renderPeopleList(){const people=state.data.people||DEFAULT_PEOPLE;let h
 window.updatePerson=(i,val)=>{state.data.people[i]=val;};
 window.deletePerson=i=>{if(state.data.people.length>1){state.data.people.splice(i,1);renderPeopleList();}};
 $('addPersonBtn').addEventListener('click',()=>{if(!state.data.people)state.data.people=[...DEFAULT_PEOPLE];state.data.people.push('New Person');renderPeopleList();});
+$('resetDataBtn').addEventListener('click',()=>{$('confirmText').textContent='Reset all data? This cannot be undone!';$('confirmModal').classList.add('active');$('confirmOk').onclick=()=>{localStorage.removeItem('tempero_data');state.data={meals:STARTER_MEALS,calendar:{},cart:[],badges:{},tags:DEFAULT_TAGS,people:DEFAULT_PEOPLE,cookLog:[],settings:{}};saveToLocal();$('confirmModal').classList.remove('active');$('settingsModal').classList.remove('active');renderCalendar();renderMeals();renderPicker();renderCart();renderAwards();showToast('Data reset!');};});
 $('saveSettingsBtn').addEventListener('click',async()=>{state.pat=$('patInput').value.trim();localStorage.setItem('github_pat',state.pat);$('settingsModal').classList.remove('active');showToast('Settings saved!');if(state.pat&&!CONFIG.REPO_OWNER)await loadData();else if(state.pat)await saveData();});
-function init(){setDate();if(localStorage.getItem('pin_verified')==='true'){$('pinScreen').classList.add('hidden');$('app').classList.add('active');loadData();}renderCalendar();renderMeals();renderPicker();renderCart();renderAwards();}
+function init(){setDate();loadFromLocal();if(localStorage.getItem('pin_verified')==='true'){$('pinScreen').classList.add('hidden');$('app').classList.add('active');loadData();}renderCalendar();renderMeals();renderPicker();renderCart();renderAwards();}
 init();
 </script>
 </body>

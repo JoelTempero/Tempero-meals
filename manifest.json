@@ -1,7 +1,7 @@
 {
-  "name": "Tempero Meals",
-  "short_name": "Tempero",
-  "description": "Meal prep planning for couples",
+  "name": "J&R Meals",
+  "short_name": "J&R Meals",
+  "description": "Meal prep planning for Joel & Rachel",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
