@@ -1178,7 +1178,13 @@
   ],
   "calendar": {},
   "cart": [],
-  "badges": {},
+  "badges": {
+    "32": {
+      "rachel": true,
+      "joel": true
+    },
+    "spin_count": 1
+  },
   "tags": [
     "Fresh",
     "Frozen",
