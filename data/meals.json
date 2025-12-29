@@ -1177,7 +1177,50 @@
     }
   ],
   "calendar": {},
-  "cart": [],
+  "cart": [
+    {
+      "name": "Ground Beef",
+      "amount": "500g",
+      "source": "Beef Tacos",
+      "checked": false
+    },
+    {
+      "name": "Taco Shells",
+      "amount": "12",
+      "source": "Beef Tacos",
+      "checked": false
+    },
+    {
+      "name": "Lettuce",
+      "amount": "1 head",
+      "source": "Beef Tacos",
+      "checked": false
+    },
+    {
+      "name": "Tomato",
+      "amount": "2",
+      "source": "Beef Tacos",
+      "checked": false
+    },
+    {
+      "name": "Cheese",
+      "amount": "1 cup",
+      "source": "Beef Tacos",
+      "checked": false
+    },
+    {
+      "name": "Sour Cream",
+      "amount": "1/2 cup",
+      "source": "Beef Tacos",
+      "checked": false
+    },
+    {
+      "name": "Taco Seasoning",
+      "amount": "1 packet",
+      "source": "Beef Tacos",
+      "checked": false
+    }
+  ],
   "badges": {
     "32": {
       "rachel": true,
