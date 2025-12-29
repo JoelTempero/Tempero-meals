@@ -1176,9 +1176,26 @@
       ]
     }
   ],
-  "calendar": {},
+  "calendar": {
+    "2025-12-29": {
+      "dinner": {
+        "mealId": "m2",
+        "eating": [
+          "Rachel",
+          "Joel"
+        ],
+        "cooking": [
+          "Joel",
+          "Jesus"
+        ]
+      }
+    }
+  },
   "cart": [],
   "badges": {
+    "1": {
+      "joel": true
+    },
     "32": {
       "rachel": true,
       "joel": true
@@ -1199,6 +1216,30 @@
     "Rachel",
     "Joel"
   ],
-  "cookLog": [],
-  "settings": {}
+  "cookLog": [
+    {
+      "mealId": "m2",
+      "cook": "Joel",
+      "date": "2025-12-29T04:46:38.190Z",
+      "tags": [
+        "Quick",
+        "Healthy",
+        "Fresh"
+      ]
+    },
+    {
+      "mealId": "m2",
+      "cook": "Jesus",
+      "date": "2025-12-29T04:46:38.190Z",
+      "tags": [
+        "Quick",
+        "Healthy",
+        "Fresh"
+      ]
+    }
+  ],
+  "settings": {},
+  "customPeople": [
+    "Jesus"
+  ]
 }
