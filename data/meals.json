@@ -63,7 +63,7 @@
     {
       "id": "m2",
       "name": "Chicken Stir Fry",
-      "icon": "🥘",
+      "icon": "🍳",
       "tags": [
         "Quick",
         "Healthy",
@@ -202,7 +202,7 @@
       ],
       "steps": [
         "Dice onion and potatoes",
-        "Sauté onion until soft",
+        "Saute onion until soft",
         "Add curry paste and cook 1 min",
         "Add potatoes and coconut milk",
         "Simmer 15 mins until potatoes tender",
@@ -214,7 +214,7 @@
     {
       "id": "m5",
       "name": "Grilled Salmon",
-      "icon": "🐟",
+      "icon": "🍣",
       "tags": [
         "Healthy",
         "Fresh",
@@ -286,7 +286,7 @@
         }
       ],
       "steps": [
-        "Preheat oven to 250°C",
+        "Preheat oven to 250C",
         "Roll out dough on floured surface",
         "Spread sauce leaving border",
         "Add torn mozzarella pieces",
@@ -483,7 +483,7 @@
     {
       "id": "m11",
       "name": "Fish and Chips",
-      "icon": "🐟",
+      "icon": "🍟",
       "tags": [
         "Comfort",
         "Frozen"
@@ -518,7 +518,7 @@
         "Cut potatoes into chips",
         "Soak chips in cold water 30 mins",
         "Make batter with flour and beer",
-        "Heat oil to 180°C",
+        "Heat oil to 180C",
         "Fry chips until golden",
         "Coat fish in batter",
         "Fry fish 4-5 mins per side",
@@ -621,7 +621,7 @@
         "Layer sauce, pasta, ricotta, mozzarella",
         "Repeat layers 3 times",
         "Top with parmesan",
-        "Bake at 180°C for 45 mins",
+        "Bake at 180C for 45 mins",
         "Rest 10 mins before cutting"
       ]
     },
@@ -713,7 +713,7 @@
         "Fry until golden",
         "Place in baking dish",
         "Top with marinara and mozzarella",
-        "Bake 20 mins at 200°C",
+        "Bake 20 mins at 200C",
         "Serve over pasta"
       ]
     },
@@ -810,7 +810,7 @@
     },
     {
       "id": "m18",
-      "name": "Shepherd's Pie",
+      "name": "Shepherds Pie",
       "icon": "🥧",
       "tags": [
         "Comfort",
@@ -854,7 +854,7 @@
         "Make mashed potatoes with butter",
         "Spread meat in dish",
         "Top with mashed potatoes",
-        "Bake at 200°C for 25 mins"
+        "Bake at 200C for 25 mins"
       ]
     },
     {
@@ -908,7 +908,7 @@
     {
       "id": "m20",
       "name": "Burrito Bowl",
-      "icon": "🥙",
+      "icon": "🌯",
       "tags": [
         "Healthy",
         "Fresh"
